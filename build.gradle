@@ -1,0 +1,17 @@
+allprojects {
+    ext {
+        springBootVersion = '1.5.4.RELEASE'
+    }
+
+    group 'in.dragonbra'
+
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}

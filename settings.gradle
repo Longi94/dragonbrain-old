@@ -1,0 +1,4 @@
+rootProject.name = 'dragonbrain-project'
+
+include 'dragonbrain', 'schema-generator', 'scheduled-task-runner'
+
