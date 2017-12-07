@@ -1,8 +1,7 @@
 package in.dragonbra.dragonbrain.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author lngtr
@@ -11,8 +10,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class FrontendController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping("/")
     public String index() {
         return "index";
+    }
+
+    @GetMapping("/projects")
+    public String projects() {
+        return "projects";
+    }
+
+    @GetMapping("/photos")
+    public String photos() {
+        return "photos";
+    }
+
+    @GetMapping("/about")
+    public String about() {
+        return "about";
     }
 }

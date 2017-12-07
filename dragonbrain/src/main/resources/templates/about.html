@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>About</title>
+    <th:block th:replace="head :: head" th:remove="tag"/>
+</head>
+<body>
+<header th:replace="nav :: toolbar('About')"></header>
+<aside th:replace="nav :: drawer('about')"></aside>
+
+</body>
+</html>
