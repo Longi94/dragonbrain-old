@@ -3,10 +3,99 @@
 <head>
     <title>Projects</title>
     <th:block th:replace="head :: head" th:remove="tag"/>
+
+    <link rel="stylesheet" href="css/projects.css"/>
 </head>
 <body>
 <header th:replace="nav :: toolbar('Projects')"></header>
 <aside th:replace="nav :: drawer('projects')"></aside>
-
+<div class="container mdc-toolbar-fixed-adjust">
+    <div id="projects-div">
+        <div>
+            <div class="mdc-card demo-card">
+                <section class="mdc-card__media"
+                         style="background-image: url('https://material-components-web.appspot.com/images/16-9.jpg')">
+                </section>
+                <section class="mdc-card__primary">
+                    <h1 class="mdc-card__title mdc-card__title--large">Title goes here</h1>
+                    <h2 class="mdc-card__subtitle">Subtitle here</h2>
+                </section>
+                <section class="mdc-card__actions">
+                    <button class="mdc-button mdc-button--compact mdc-card__action">Action 1</button>
+                    <button class="mdc-button mdc-button--compact mdc-card__action">Action 2</button>
+                </section>
+            </div>
+        </div>
+        <div>
+            <div class="mdc-card demo-card">
+                <section class="mdc-card__media"
+                         style="background-image: url('https://material-components-web.appspot.com/images/16-9.jpg')">
+                </section>
+                <section class="mdc-card__primary">
+                    <h1 class="mdc-card__title mdc-card__title--large">Title goes here</h1>
+                    <h2 class="mdc-card__subtitle">Subtitle here</h2>
+                </section>
+                <section class="mdc-card__actions">
+                    <button class="mdc-button mdc-button--compact mdc-card__action">Action 1</button>
+                    <button class="mdc-button mdc-button--compact mdc-card__action">Action 2</button>
+                </section>
+            </div>
+        </div>
+        <div>
+            <div class="mdc-card demo-card">
+                <section class="mdc-card__media"
+                         style="background-image: url('https://material-components-web.appspot.com/images/16-9.jpg')">
+                </section>
+                <section class="mdc-card__primary">
+                    <h1 class="mdc-card__title mdc-card__title--large">Title goes here</h1>
+                    <h2 class="mdc-card__subtitle">Subtitle here</h2>
+                </section>
+                <section class="mdc-card__actions">
+                    <button class="mdc-button mdc-button--compact mdc-card__action">Action 1</button>
+                    <button class="mdc-button mdc-button--compact mdc-card__action">Action 2</button>
+                </section>
+            </div>
+        </div>
+    </div>
+    <h2 class="mdc-typography--title mdc-typography--adjust-margin">Smaller projects</h2>
+    <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list two-line-avatar-text-icon-demo">
+        <li class="mdc-list-item">
+            <span class="mdc-list-item__start-detail grey-bg" role="presentation">
+                <i class="material-icons" aria-hidden="true">folder</i>
+            </span>
+            <span class="mdc-list-item__text">Photos
+                <span class="mdc-list-item__text__secondary">Jan 9, 2014</span>
+            </span>
+            <a href="#" class="mdc-list-item__end-detail material-icons" aria-label="View more information"
+               title="More info" onclick="event.preventDefault();">
+                info
+            </a>
+        </li>
+        <li class="mdc-list-item">
+            <span class="mdc-list-item__start-detail grey-bg" role="presentation">
+                <i class="material-icons" aria-hidden="true">folder</i>
+            </span>
+            <span class="mdc-list-item__text">Recipes
+                <span class="mdc-list-item__text__secondary">Jan 17, 2014</span>
+            </span>
+            <a href="#" class="mdc-list-item__end-detail material-icons" aria-label="View more information"
+               title="More info" onclick="event.preventDefault();">
+                info
+            </a>
+        </li>
+        <li class="mdc-list-item">
+            <span class="mdc-list-item__start-detail grey-bg" role="presentation">
+                <i class="material-icons" aria-hidden="true">folder</i>
+            </span>
+            <span class="mdc-list-item__text">Work
+                <span class="mdc-list-item__text__secondary">Jan 28, 2014</span>
+            </span>
+            <a href="#" class="mdc-list-item__end-detail material-icons" aria-label="View more information"
+               title="More info" onclick="event.preventDefault();">
+                info
+            </a>
+        </li>
+    </ul>
+</div>
 </body>
 </html>
