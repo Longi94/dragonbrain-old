@@ -1,6 +1,9 @@
 package in.dragonbra.dragonbrain.controller;
 
+import in.dragonbra.dragonbrain.repository.ProjectRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -10,13 +13,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class FrontendController {
 
+    private final ProjectRepository projectRepository;
+
+    @Autowired
+    public FrontendController(ProjectRepository projectRepository) {
+        this.projectRepository = projectRepository;
+    }
+
     @GetMapping("/")
     public String index() {
         return "index";
     }
 
     @GetMapping("/projects")
-    public String projects() {
+    public String projects(Model model) {
+        model.addAttribute("projects", projectRepository.findBySmall(false));
+        model.addAttribute("smallProjects", projectRepository.findBySmall(true));
         return "projects";
     }
 

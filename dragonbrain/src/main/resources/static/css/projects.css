@@ -14,5 +14,6 @@
 #projects-div .mdc-card .mdc-card__media {
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     height: 12.313rem;
 }

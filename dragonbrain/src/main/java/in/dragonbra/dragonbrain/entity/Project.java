@@ -1,0 +1,102 @@
+package in.dragonbra.dragonbrain.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+/**
+ * @author lngtr
+ * @since 2017-12-08
+ */
+@Entity(name = "project")
+public class Project {
+
+    @Id
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "name", nullable = false, length = 100)
+    private String name;
+
+    @Column(name = "type", nullable = false, length = 50)
+    private String type;
+
+    @Column(name = "description", length = 1000)
+    private String description;
+
+    @Column(name = "source")
+    private String sourceUrl;
+
+    @Column(name = "url")
+    private String url;
+
+    @Column(name = "image")
+    private String image;
+
+    @Column(name = "small", nullable = false)
+    private Boolean small;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getSourceUrl() {
+        return sourceUrl;
+    }
+
+    public void setSourceUrl(String sourceUrl) {
+        this.sourceUrl = sourceUrl;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Boolean getSmall() {
+        return small;
+    }
+
+    public void setSmall(Boolean small) {
+        this.small = small;
+    }
+}
