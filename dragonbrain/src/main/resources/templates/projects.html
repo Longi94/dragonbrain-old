@@ -27,21 +27,10 @@
             </div>
         </div>
     </div>
-    <h2 class="mdc-typography--title mdc-typography--adjust-margin" th:if="${not #lists.isEmpty(smallProjects)}">Smaller projects</h2>
-    <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list two-line-avatar-text-icon-demo" th:if="${not #lists.isEmpty(smallProjects)}">
-        <li class="mdc-list-item" th:each="project : ${smallProjects}">
-            <span class="mdc-list-item__start-detail grey-bg" role="presentation">
-                <i class="material-icons" aria-hidden="true">folder</i>
-            </span>
-            <span class="mdc-list-item__text"><th:block th:text="${project.name}"/>
-                <span class="mdc-list-item__text__secondary" th:text="${project.type}"></span>
-            </span>
-            <a href="#" class="mdc-list-item__end-detail material-icons" aria-label="View more information"
-               title="More info" onclick="event.preventDefault();" th:if="${project.url != null}" th:href="${project.url}">
-                info
-            </a>
-        </li>
-    </ul>
+    <div class="center-content">
+        <a class="mdc-button mdc-button--stroked mdc-ripple-upgraded" target="_blank"
+           href="https://github.com/Longi94">See GitHub for more open source projects</a>
+    </div>
 </div>
 </body>
 </html>

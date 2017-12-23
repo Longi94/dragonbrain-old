@@ -1,3 +1,9 @@
 :root {
     --mdc-theme-primary: #22A63E;
 }
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
