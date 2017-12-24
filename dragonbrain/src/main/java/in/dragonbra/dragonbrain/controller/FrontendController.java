@@ -31,13 +31,13 @@ public class FrontendController {
 
     @GetMapping("/projects")
     public String projects(Model model) {
-        model.addAttribute("projects", projectRepository.findAll());
+        model.addAttribute("projects", projectRepository.findAllByOrderByOrderBy());
         return "projects";
     }
 
     @GetMapping("/photos")
     public String photos(Model model) {
-        model.addAttribute("photos", photoRepository.findAll());
+        model.addAttribute("photos", photoRepository.findAllByOrderByOrderBy());
         return "photos";
     }
 

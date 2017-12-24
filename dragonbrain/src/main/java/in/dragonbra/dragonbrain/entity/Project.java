@@ -6,7 +6,9 @@ import javax.persistence.*;
  * @author lngtr
  * @since 2017-12-08
  */
-@Entity(name = "project")
+@Entity
+@Table(name = "project", uniqueConstraints =
+@UniqueConstraint(name = "ok_project_order", columnNames = "order_by"))
 public class Project {
 
     @Id
@@ -31,6 +33,9 @@ public class Project {
 
     @Column(name = "image")
     private String image;
+
+    @Column(name = "order_by", nullable = false)
+    private Integer orderBy;
 
     public Long getId() {
         return id;
@@ -86,5 +91,13 @@ public class Project {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Integer getOrderBy() {
+        return orderBy;
+    }
+
+    public void setOrderBy(Integer orderBy) {
+        this.orderBy = orderBy;
     }
 }

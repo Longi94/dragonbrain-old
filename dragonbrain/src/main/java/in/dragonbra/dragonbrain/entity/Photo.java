@@ -7,7 +7,9 @@ import java.util.Date;
  * @author lngtr
  * @since 2017-12-24
  */
-@Entity(name = "photo")
+@Entity
+@Table(name = "photo", uniqueConstraints =
+@UniqueConstraint(name = "uk_photo_order", columnNames = "order_by"))
 public class Photo {
 
     @Id
@@ -27,6 +29,9 @@ public class Photo {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "timestamp")
     private Date timestamp;
+
+    @Column(name = "order_by", nullable = false)
+    private Integer orderBy;
 
     public Long getId() {
         return id;
@@ -66,5 +71,13 @@ public class Photo {
 
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public Integer getOrderBy() {
+        return orderBy;
+    }
+
+    public void setOrderBy(Integer orderBy) {
+        this.orderBy = orderBy;
     }
 }
