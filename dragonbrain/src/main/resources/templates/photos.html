@@ -7,6 +7,16 @@
 <body>
 <header th:replace="nav :: toolbar('Photos')"></header>
 <aside th:replace="nav :: drawer('photos')"></aside>
-
+<div class="container mdc-toolbar-fixed-adjust">
+    <div class="mdc-grid-list">
+        <ul class="mdc-grid-list__tiles">
+            <li class="mdc-grid-tile" th:each="photo : ${photos}">
+                <div class="mdc-grid-tile__primary">
+                    <img class="mdc-grid-tile__primary-content" th:src="${photo.path}"/>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>

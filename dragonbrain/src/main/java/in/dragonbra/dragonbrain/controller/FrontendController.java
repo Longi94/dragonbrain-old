@@ -1,5 +1,6 @@
 package in.dragonbra.dragonbrain.controller;
 
+import in.dragonbra.dragonbrain.repository.PhotoRepository;
 import in.dragonbra.dragonbrain.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,9 +16,12 @@ public class FrontendController {
 
     private final ProjectRepository projectRepository;
 
+    private final PhotoRepository photoRepository;
+
     @Autowired
-    public FrontendController(ProjectRepository projectRepository) {
+    public FrontendController(ProjectRepository projectRepository, PhotoRepository photoRepository) {
         this.projectRepository = projectRepository;
+        this.photoRepository = photoRepository;
     }
 
     @GetMapping("/")
@@ -27,13 +31,13 @@ public class FrontendController {
 
     @GetMapping("/projects")
     public String projects(Model model) {
-        model.addAttribute("projects", projectRepository.findBySmall(false));
-        model.addAttribute("smallProjects", projectRepository.findBySmall(true));
+        model.addAttribute("projects", projectRepository.findAll());
         return "projects";
     }
 
     @GetMapping("/photos")
-    public String photos() {
+    public String photos(Model model) {
+        model.addAttribute("photos", photoRepository.findAll());
         return "photos";
     }
 

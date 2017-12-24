@@ -1,8 +1,6 @@
 package in.dragonbra.dragonbrain.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @author lngtr
@@ -12,6 +10,7 @@ import javax.persistence.Id;
 public class Project {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -32,9 +31,6 @@ public class Project {
 
     @Column(name = "image")
     private String image;
-
-    @Column(name = "small", nullable = false)
-    private Boolean small;
 
     public Long getId() {
         return id;
@@ -90,13 +86,5 @@ public class Project {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public Boolean getSmall() {
-        return small;
-    }
-
-    public void setSmall(Boolean small) {
-        this.small = small;
     }
 }
