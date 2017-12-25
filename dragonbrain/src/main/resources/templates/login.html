@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <th:block th:replace="head :: head" th:remove="tag"/>
+</head>
+<body>
+<header th:replace="nav :: toolbar('Login')"></header>
+<aside th:replace="nav :: drawer('login')"></aside>
+<div class="container mdc-toolbar-fixed-adjust">
+    <form  th:action="@{/login}" method="post" id="login-form">
+        <div class="mdc-form-field">
+            <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+                <input id="username" name="username" type="text" class="mdc-text-field__input"/>
+                <label for="username" class="mdc-text-field__label">
+                    Username
+                </label>
+                <div class="mdc-text-field__bottom-line"></div>
+            </div>
+        </div>
+
+        <div class="mdc-form-field">
+            <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+                <input id="password" name="password" type="password" class="mdc-text-field__input"/>
+                <label for="password" class="mdc-text-field__label">
+                    Password
+                </label>
+                <div class="mdc-text-field__bottom-line"></div>
+            </div>
+        </div>
+
+        <button type="submit" class="mdc-button mdc-button--raised mdc-ripple-surface"
+                data-mdc-auto-init="MDCRipple">
+            Login
+        </button>
+    </form>
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <div th:if="${errorMessage}" th:text="${errorMessage}">
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Admin</title>
+    <th:block th:replace="head :: head" th:remove="tag"/>
+</head>
+<body>
+<header th:replace="nav :: toolbar('Admin')"></header>
+<aside th:replace="nav :: drawer('admin')"></aside>
+<div class="container mdc-toolbar-fixed-adjust">
+    <div sec:authorize="isAuthenticated()">
+        UR LOGGED IN EYEY
+    </div>
+</div>
+</body>
+</html>

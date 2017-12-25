@@ -45,4 +45,14 @@ public class FrontendController {
     public String about() {
         return "about";
     }
+
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 }
