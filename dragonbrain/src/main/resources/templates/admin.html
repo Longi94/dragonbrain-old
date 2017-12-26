@@ -53,7 +53,7 @@
                     <li class="mdc-list-item">
                         <span class="mdc-list-item__text">
                             <span th:text="${project.name}" th:remove="tag"></span>
-                            <span class="mdc-list-item__secondary-text" th:text="${project.description}"></span>
+                            <span class="mdc-list-item__secondary-text" th:text="${project.type}"></span>
                         </span>
                         <i class="mdc-list-item__end-detail material-icons" onclick="openProjectMenu(event, this);">more_vert</i>
                     </li>
@@ -114,8 +114,8 @@
                 <div class="mdc-text-field__bottom-line"></div>
             </div>
             <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
-                <input type="text" id="new-project-description" class="mdc-text-field__input"/>
-                <label class="mdc-text-field__label" for="new-project-description">Description</label>
+                <input type="text" id="new-project-type" class="mdc-text-field__input"/>
+                <label class="mdc-text-field__label" for="new-project-type">Type</label>
                 <div class="mdc-text-field__bottom-line"></div>
             </div>
             <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
@@ -132,6 +132,10 @@
                 <input type="text" id="new-project-image" class="mdc-text-field__input"/>
                 <label class="mdc-text-field__label" for="new-project-image">Image link</label>
                 <div class="mdc-text-field__bottom-line"></div>
+            </div>
+            <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField">
+                <textarea id="new-project-description" class="mdc-text-field__input" rows="8" cols="40"></textarea>
+                <label  for="new-project-description" class="mdc-text-field__label">Description</label>
             </div>
         </section>
         <footer class="mdc-dialog__footer">

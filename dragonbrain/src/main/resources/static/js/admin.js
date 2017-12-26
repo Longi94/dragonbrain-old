@@ -75,4 +75,44 @@ function openPhotoMenu(event, element) {
 function openNewProjectDialog(event) {
     newProjectDialog.lastFocusedTarget = event.target;
     newProjectDialog.show();
+
+    newProjectDialog.listen('MDCDialog:accept', function() {
+        var params = {
+            name: $("#new-project-name").val(),
+            type: $("#new-project-type").val(),
+            description: $("#new-project-description").val(),
+            sourceUrl: $("#new-project-source").val(),
+            url: $("#new-project-link").val(),
+            image:  $("#new-project-image").val()
+        };
+
+        authAjax({
+            url: "/admin/projects",
+            type: "POST",
+            data: JSON.stringify(params),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                var $listProject = $("#list-project");
+
+                $listProject.append('<li role="separator" class="mdc-list-divider"></li>')
+                    .append(
+                        '<li class="mdc-list-item">' +
+                        '<span class="mdc-list-item__text">' + params.name +
+                        '<span class="mdc-list-item__secondary-text">' + params.type + '</span>' +
+                        '</span>' +
+                        '<i class="mdc-list-item__end-detail material-icons" onclick="openProjectMenu(event, this);">more_vert</i>' +
+                        '</li>'
+                    );
+
+                projects.push(data);
+            }
+        });
+
+        $("#dialog-add-project").find("input,textarea").val("");
+    });
+
+    newProjectDialog.listen('MDCDialog:cancel', function() {
+        $("#dialog-add-project").find("input,textarea").val("");
+    });
 }

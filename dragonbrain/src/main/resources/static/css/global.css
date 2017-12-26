@@ -9,6 +9,12 @@ body {
     background-color: #F2F2F2;
 }
 
+.mdc-dialog__surface {
+    background: white;
+    max-height: 500px;
+    overflow: auto;
+}
+
 .mdc-card {
     background-color: white;
 }
