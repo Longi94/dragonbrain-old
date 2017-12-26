@@ -37,7 +37,7 @@ public class FrontendController {
 
     @GetMapping("/photos")
     public String photos(Model model) {
-        model.addAttribute("photos", photoRepository.findAllByOrderByOrderBy());
+        model.addAttribute("photos", photoRepository.findAllByOrderByDateAsc());
         return "photos";
     }
 
@@ -49,7 +49,7 @@ public class FrontendController {
     @GetMapping("/admin")
     public String admin(Model model) {
         model.addAttribute("projects", projectRepository.findAllByOrderByOrderBy());
-        model.addAttribute("photos", photoRepository.findAllByOrderByOrderBy());
+        model.addAttribute("photos", photoRepository.findAllByOrderByDateAsc());
         return "admin";
     }
 

@@ -38,6 +38,10 @@
                 <a class="mdc-list-item" th:classappend="${'about'.equals(page) ? 'mdc-temporary-drawer--selected' : ''}" href="/about">
                     <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">info</i>About
                 </a>
+                <a class="mdc-list-item" th:classappend="${'admin'.equals(page) ? 'mdc-temporary-drawer--selected' : ''}" href="/admin"
+                sec:authorize="isAuthenticated()">
+                    <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">settings</i>Admin
+                </a>
             </div>
         </nav>
     </nav>

@@ -26,7 +26,7 @@
     <button class="mdc-fab material-icons mdc-fab--mini mdc-fab--exited" aria-label="Project" onclick="openNewProjectDialog(event);">
         <span class="mdc-fab__icon">star</span>
     </button>
-    <button class="mdc-fab material-icons mdc-fab--mini mdc-fab--exited" aria-label="Photo">
+    <button class="mdc-fab material-icons mdc-fab--mini mdc-fab--exited" aria-label="Photo" onclick="openNewPhotoDialog(event);">
         <span class="mdc-fab__icon">photo</span>
     </button>
 </div>
@@ -50,7 +50,7 @@
         <section class="mdc-card__primary">
             <ul class="mdc-list" id="list-project">
                 <th:block th:each="project, iter : ${projects}">
-                    <li class="mdc-list-item">
+                    <li class="mdc-list-item" th:value="${project.id}">
                         <span class="mdc-list-item__text">
                             <span th:text="${project.name}" th:remove="tag"></span>
                             <span class="mdc-list-item__secondary-text" th:text="${project.type}"></span>
@@ -67,7 +67,7 @@
         <section class="mdc-card__primary">
             <ul class="mdc-list" id="list-photo">
                 <th:block th:each="photo, iter : ${photos}">
-                    <li class="mdc-list-item">
+                    <li class="mdc-list-item" th:value="${photo.id}">
                         <span class="mdc-list-item__text">
                             <span th:text="${photo.location}" th:remove="tag"></span>
                             <span class="mdc-list-item__secondary-text" th:text="${photo.device}"></span>
@@ -86,13 +86,13 @@
         <li class="mdc-list-item" role="menuitem" tabindex="0">Move up</li>
         <li class="mdc-list-item" role="menuitem" tabindex="0">Move down</li>
         <li class="mdc-list-item" role="menuitem" tabindex="0">Edit</li>
-        <li class="mdc-list-item" role="menuitem" tabindex="0">Remove</li>
+        <li class="mdc-list-item" role="menuitem" tabindex="0" onclick="deleteSelectedProject()">Remove</li>
     </ul>
 </div>
 <div class="mdc-simple-menu mdc-simple-menu--open-from-top-right" tabindex="-1" id="menu-photo">
     <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
         <li class="mdc-list-item" role="menuitem" tabindex="0">Edit</li>
-        <li class="mdc-list-item" role="menuitem" tabindex="0">Remove</li>
+        <li class="mdc-list-item" role="menuitem" tabindex="0" onclick="deleteSelectedPhoto()">Remove</li>
     </ul>
 </div>
 
@@ -100,7 +100,7 @@
        class="mdc-dialog"
        role="alertdialog"
        aria-labelledby="dialog-add-project-label"
-       aria-describedby="my-mdc-dialog-description">
+       aria-describedby="dialog-add-project-description">
     <div class="mdc-dialog__surface">
         <header class="mdc-dialog__header">
             <h2 id="dialog-add-project-label" class="mdc-dialog__header__title">
@@ -136,6 +136,47 @@
             <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField">
                 <textarea id="new-project-description" class="mdc-text-field__input" rows="8" cols="40"></textarea>
                 <label  for="new-project-description" class="mdc-text-field__label">Description</label>
+            </div>
+        </section>
+        <footer class="mdc-dialog__footer">
+            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Cancel</button>
+            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Save</button>
+        </footer>
+    </div>
+    <div class="mdc-dialog__backdrop"></div>
+</aside>
+
+<aside id="dialog-add-photo"
+       class="mdc-dialog"
+       role="alertdialog"
+       aria-labelledby="dialog-add-photo-label"
+       aria-describedby="dialog-add-photo-description">
+    <div class="mdc-dialog__surface">
+        <header class="mdc-dialog__header">
+            <h2 id="dialog-add-photo-label" class="mdc-dialog__header__title">
+                Add a new photo
+            </h2>
+        </header>
+        <section id="dialog-add-photo-description" class="mdc-dialog__body">
+            <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+                <input type="text" id="new-photo-location" class="mdc-text-field__input"/>
+                <label class="mdc-text-field__label" for="new-photo-location">Location</label>
+                <div class="mdc-text-field__bottom-line"></div>
+            </div>
+            <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+                <input type="text" id="new-photo-device" class="mdc-text-field__input"/>
+                <label class="mdc-text-field__label" for="new-photo-device">Device</label>
+                <div class="mdc-text-field__bottom-line"></div>
+            </div>
+            <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+                <input type="date" id="new-photo-date" class="mdc-text-field__input"/>
+                <label class="mdc-text-field__label" for="new-photo-date">Date</label>
+                <div class="mdc-text-field__bottom-line"></div>
+            </div>
+            <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+                <input type="text" id="new-photo-image" class="mdc-text-field__input"/>
+                <label class="mdc-text-field__label" for="new-photo-image">Image link</label>
+                <div class="mdc-text-field__bottom-line"></div>
             </div>
         </section>
         <footer class="mdc-dialog__footer">

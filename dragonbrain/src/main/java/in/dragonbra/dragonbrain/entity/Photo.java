@@ -8,8 +8,7 @@ import java.util.Date;
  * @since 2017-12-24
  */
 @Entity
-@Table(name = "photo", uniqueConstraints =
-@UniqueConstraint(name = "uk_photo_order", columnNames = "order_by"))
+@Table(name = "photo")
 public class Photo {
 
     @Id
@@ -26,12 +25,9 @@ public class Photo {
     @Column(name = "device")
     private String device;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "timestamp")
-    private Date timestamp;
-
-    @Column(name = "order_by", nullable = false)
-    private Integer orderBy;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "date")
+    private Date date;
 
     public Long getId() {
         return id;
@@ -65,19 +61,11 @@ public class Photo {
         this.device = device;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
+    public Date getDate() {
+        return date;
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public Integer getOrderBy() {
-        return orderBy;
-    }
-
-    public void setOrderBy(Integer orderBy) {
-        this.orderBy = orderBy;
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

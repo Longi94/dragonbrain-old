@@ -10,5 +10,5 @@ import java.util.List;
  * @since 2017-12-24
  */
 public interface PhotoRepository extends JpaRepository<Photo, Long> {
-    List<Photo> findAllByOrderByOrderBy();
+    List<Photo> findAllByOrderByDateAsc();
 }
