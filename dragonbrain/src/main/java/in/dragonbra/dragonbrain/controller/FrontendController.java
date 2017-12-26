@@ -47,7 +47,9 @@ public class FrontendController {
     }
 
     @GetMapping("/admin")
-    public String admin() {
+    public String admin(Model model) {
+        model.addAttribute("projects", projectRepository.findAllByOrderByOrderBy());
+        model.addAttribute("photos", photoRepository.findAllByOrderByOrderBy());
         return "admin";
     }
 

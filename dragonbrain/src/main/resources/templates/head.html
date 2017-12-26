@@ -26,12 +26,15 @@
             crossorigin="anonymous"></script>
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 
-    <script th:inline="javascript">
-        // <![CDATA[
+    <script>
         $('document').ready(function () {
             window.mdc.autoInit();
+
+            document.querySelectorAll('.mdc-fab,.mdc-button,.mdc-temporary-drawer .mdc-list-item')
+                .forEach(function (node) {
+                    mdc.ripple.MDCRipple.attachTo(node);
+                });
         });
-        // ]]>
     </script>
 
     <script src="/js/global.js"></script>
