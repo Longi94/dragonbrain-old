@@ -1,19 +1,18 @@
 #projects-div {
     display: flex;
-    flex-flow: wrap;
-    align-content: left;
-    justify-content: left;
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content: center;
 }
 
 #projects-div .mdc-card {
-    margin: 24px;
-    min-width: 320px;
-    max-width: 21.875rem;
+    margin: 16px;
+    width: 240px;
 }
 
 #projects-div .mdc-card .mdc-card__media {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 12.313rem;
+    height: 160px;
 }

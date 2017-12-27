@@ -1,0 +1,4 @@
+.mdc-grid-list__tiles {
+    display: flex;
+    justify-content: center;
+}
