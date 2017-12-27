@@ -9,6 +9,14 @@ body {
     background-color: #F2F2F2;
 }
 
+.mdc-toolbar {
+    z-index: 90;
+}
+
+.mdc-temporary-drawer {
+    z-index: 100;
+}
+
 .mdc-dialog__surface {
     background: white;
     max-height: 500px;

@@ -8,7 +8,7 @@
 <header th:replace="nav :: toolbar('Login')"></header>
 <aside th:replace="nav :: drawer('login')"></aside>
 <div class="container mdc-toolbar-fixed-adjust">
-    <form  th:action="@{/login}" method="post" id="login-form">
+    <form  th:action="${registered ? '/login' : '/register'}" method="post" id="login-form">
         <div class="mdc-form-field">
             <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
                 <input id="username" name="username" type="text" class="mdc-text-field__input"/>
@@ -29,10 +29,10 @@
             </div>
         </div>
 
+        <input id="root" name="root" type="hidden" value="true" th:if="!${registered}"/>
+
         <button type="submit" class="mdc-button mdc-button--raised mdc-ripple-surface"
-                data-mdc-auto-init="MDCRipple">
-            Login
-        </button>
+                data-mdc-auto-init="MDCRipple" th:text="${registered ? 'Login' : 'Register'}"></button>
     </form>
     <div th:if="${param.error}">
         Invalid username and password.

@@ -34,50 +34,50 @@ public class AdminController {
 
     @PostMapping("/projects")
     public Project createProject(Principal principal, @RequestBody Project project) {
-        //userService.checkPrincipal(principal);
+        userService.checkPrincipal(principal);
         return projectService.createProject(project);
     }
 
     @PostMapping("/photos")
     public Photo createPhoto(Principal principal, @RequestBody Photo photo) {
-        //userRepository.checkPrincipal(principal);
+        userService.checkPrincipal(principal);
         photoRepository.save(photo);
         return photo;
     }
 
     @DeleteMapping("/projects/{id}")
     public void deleteProject(Principal principal, @PathVariable("id") Long id) {
-        //userService.checkPrincipal(principal);
+        userService.checkPrincipal(principal);
         projectService.deleteProject(id);
     }
 
     @DeleteMapping("/photos/{id}")
     public void deletePhoto(Principal principal, @PathVariable("id") Long id) {
-        //userService.checkPrincipal(principal);
+        userService.checkPrincipal(principal);
         photoRepository.delete(id);
     }
 
     @PostMapping("/projects/{id}/move")
     public void moveProject(Principal principal, @PathVariable("id") Long id, @RequestParam("up") boolean up) {
-        //userService.checkPrincipal(principal);
+        userService.checkPrincipal(principal);
         projectService.moveProject(id, up);
     }
 
     @PutMapping("/projects/{id}")
     public Project editProject(Principal principal, @PathVariable("id") Long id, @RequestBody Project project) {
-        //userService.checkPrincipal(principal);
+        userService.checkPrincipal(principal);
         return projectService.updateProject(id, project);
     }
 
     @GetMapping("/projects/{id}")
     public Project getProject(Principal principal, @PathVariable("id") Long id) {
-        //userService.checkPrincipal(principal);
+        userService.checkPrincipal(principal);
         return projectService.getProject(id);
     }
 
     @PutMapping("/photos/{id}")
     public Photo editProject(Principal principal, @PathVariable("id") Long id, @RequestBody Photo photo) {
-        //userService.checkPrincipal(principal);
+        userService.checkPrincipal(principal);
         Photo original = photoRepository.findOne(id);
 
         original.setDate(photo.getDate());
@@ -90,7 +90,7 @@ public class AdminController {
 
     @GetMapping("/photos/{id}")
     public Photo getPhoto(Principal principal, @PathVariable("id") Long id) {
-        //userService.checkPrincipal(principal);
+        userService.checkPrincipal(principal);
         return photoRepository.findOne(id);
     }
 }

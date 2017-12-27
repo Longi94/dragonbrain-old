@@ -1,11 +1,17 @@
 package in.dragonbra.dragonbrain.controller;
 
+import in.dragonbra.dragonbrain.controller.dto.UserDto;
 import in.dragonbra.dragonbrain.repository.PhotoRepository;
 import in.dragonbra.dragonbrain.repository.ProjectRepository;
+import in.dragonbra.dragonbrain.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.security.Principal;
 
 /**
  * @author lngtr
@@ -18,10 +24,13 @@ public class FrontendController {
 
     private final PhotoRepository photoRepository;
 
+    private final UserService userService;
+
     @Autowired
-    public FrontendController(ProjectRepository projectRepository, PhotoRepository photoRepository) {
+    public FrontendController(ProjectRepository projectRepository, PhotoRepository photoRepository, UserService userService) {
         this.projectRepository = projectRepository;
         this.photoRepository = photoRepository;
+        this.userService = userService;
     }
 
     @GetMapping("/")
@@ -54,7 +63,14 @@ public class FrontendController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        model.addAttribute("registered", userService.rootRegistered());
         return "login";
+    }
+
+    @PostMapping("/register")
+    public String register(Principal principal, @ModelAttribute UserDto userDto) {
+        userService.registerUser(userDto, principal);
+        return "redirect:login";
     }
 }
