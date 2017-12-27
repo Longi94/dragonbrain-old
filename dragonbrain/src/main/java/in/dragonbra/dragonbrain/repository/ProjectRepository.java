@@ -15,4 +15,10 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
 
     @Query(value = "SELECT max(order_by) FROM project", nativeQuery = true)
     Integer getMaxOrderBy();
+
+    @Query(value = "SELECT * FROM project WHERE order_by > ?1 ORDER BY order_by ASC LIMIT 1", nativeQuery = true)
+    Project getNext(int order);
+
+    @Query(value = "SELECT * FROM project WHERE order_by < ?1 ORDER BY order_by DESC LIMIT 1", nativeQuery = true)
+    Project getPrevious(int order);
 }

@@ -3,8 +3,8 @@ package in.dragonbra.dragonbrain.controller;
 import in.dragonbra.dragonbrain.entity.Photo;
 import in.dragonbra.dragonbrain.entity.Project;
 import in.dragonbra.dragonbrain.repository.PhotoRepository;
-import in.dragonbra.dragonbrain.repository.ProjectRepository;
-import in.dragonbra.dragonbrain.repository.UserRepository;
+import in.dragonbra.dragonbrain.service.ProjectService;
+import in.dragonbra.dragonbrain.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,26 +18,24 @@ import java.security.Principal;
 @RequestMapping("/admin")
 public class AdminController {
 
-    private final ProjectRepository projectRepository;
+    private final ProjectService projectService;
 
     private final PhotoRepository photoRepository;
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @Autowired
-    public AdminController(ProjectRepository projectRepository, PhotoRepository photoRepository,
-                           UserRepository userRepository) {
-        this.projectRepository = projectRepository;
+    public AdminController(ProjectService projectService, PhotoRepository photoRepository,
+                           UserService userService) {
+        this.projectService = projectService;
         this.photoRepository = photoRepository;
-        this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @PostMapping("/projects")
     public Project createProject(Principal principal, @RequestBody Project project) {
-        //userRepository.checkPrincipal(principal);
-        project.setOrderBy(projectRepository.getMaxOrderBy() + 1);
-        projectRepository.save(project);
-        return project;
+        //userService.checkPrincipal(principal);
+        return projectService.createProject(project);
     }
 
     @PostMapping("/photos")
@@ -49,13 +47,19 @@ public class AdminController {
 
     @DeleteMapping("/projects/{id}")
     public void deleteProject(Principal principal, @PathVariable("id") Long id) {
-        //userRepository.checkPrincipal(principal);
-        projectRepository.delete(id);
+        //userService.checkPrincipal(principal);
+        projectService.deleteProject(id);
     }
 
     @DeleteMapping("/photos/{id}")
     public void deletePhoto(Principal principal, @PathVariable("id") Long id) {
-        //userRepository.checkPrincipal(principal);
+        //userService.checkPrincipal(principal);
         photoRepository.delete(id);
+    }
+
+    @PostMapping("/projects/{id}/move")
+    public void moveProject(Principal principal, @PathVariable("id") Long id, @RequestParam("up") boolean up) {
+        //userService.checkPrincipal(principal);
+        projectService.moveProject(id, up);
     }
 }

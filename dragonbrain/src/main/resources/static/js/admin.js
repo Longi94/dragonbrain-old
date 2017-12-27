@@ -82,14 +82,14 @@ function openNewProjectDialog(event) {
     newProjectDialog.lastFocusedTarget = event.target;
     newProjectDialog.show();
 
-    newProjectDialog.listen('MDCDialog:accept', function() {
+    newProjectDialog.listen('MDCDialog:accept', function () {
         var params = {
             name: $("#new-project-name").val(),
             type: $("#new-project-type").val(),
             description: $("#new-project-description").val(),
             sourceUrl: $("#new-project-source").val(),
             url: $("#new-project-link").val(),
-            image:  $("#new-project-image").val()
+            image: $("#new-project-image").val()
         };
 
         authAjax({
@@ -118,7 +118,7 @@ function openNewProjectDialog(event) {
         $("#dialog-add-project").find("input,textarea").val("");
     });
 
-    newProjectDialog.listen('MDCDialog:cancel', function() {
+    newProjectDialog.listen('MDCDialog:cancel', function () {
         $("#dialog-add-project").find("input,textarea").val("");
     });
 }
@@ -127,7 +127,7 @@ function openNewPhotoDialog(event) {
     newPhotoDialog.lastFocusedTarget = event.target;
     newPhotoDialog.show();
 
-    newPhotoDialog.listen('MDCDialog:accept', function() {
+    newPhotoDialog.listen('MDCDialog:accept', function () {
         var params = {
             location: $("#new-photo-location").val(),
             device: $("#new-photo-device").val(),
@@ -161,7 +161,7 @@ function openNewPhotoDialog(event) {
         $("#dialog-add-photo").find("input").val("");
     });
 
-    newPhotoDialog.listen('MDCDialog:cancel', function() {
+    newPhotoDialog.listen('MDCDialog:cancel', function () {
         $("#dialog-add-photo").find("input").val("");
     });
 }
@@ -200,6 +200,25 @@ function deleteSelectedPhoto() {
 
             $toRemove.remove();
             selectedPhoto = -1;
+        }
+    });
+}
+
+function moveSelectedProject(up) {
+    authAjax({
+        url: '/admin/projects/' + selectedProject + '/move',
+        type: 'POST',
+        data: {up: up},
+        success: function () {
+            var $toMove = $("#list-project").find(".mdc-list-item[value='" + selectedProject + "']");
+
+            if (up) {
+                swapNodes($toMove.get(0), $toMove.prev().prev().get(0));
+            } else {
+                swapNodes($toMove.get(0), $toMove.next().next().get(0));
+            }
+
+            selectedProject = -1;
         }
     });
 }
