@@ -26,14 +26,7 @@ $('document').ready(function () {
 
 function toggleFab() {
     if (fabExpanded) {
-        fabExpanded = false;
-        var delay = 0;
-        $($(".mdc-fab--mini").get().reverse()).each(function (index, element) {
-            setTimeout(function () {
-                $(element).addClass("mdc-fab--exited");
-            }, delay);
-            delay += 50;
-        });
+        closeFab();
     } else {
         fabExpanded = true;
         var delay = 0;
@@ -44,6 +37,17 @@ function toggleFab() {
             delay += 50;
         });
     }
+}
+
+function closeFab() {
+    fabExpanded = false;
+    var delay = 0;
+    $($(".mdc-fab--mini").get().reverse()).each(function (index, element) {
+        setTimeout(function () {
+            $(element).addClass("mdc-fab--exited");
+        }, delay);
+        delay += 50;
+    });
 }
 
 function openProjectMenu(event, element) {
@@ -81,6 +85,7 @@ function openPhotoMenu(event, element) {
 function openNewProjectDialog(event) {
     newProjectDialog.lastFocusedTarget = event.target;
     newProjectDialog.show();
+    closeFab();
 
     newProjectDialog.listen('MDCDialog:accept', function () {
         var params = {
@@ -126,6 +131,7 @@ function openNewProjectDialog(event) {
 function openNewPhotoDialog(event) {
     newPhotoDialog.lastFocusedTarget = event.target;
     newPhotoDialog.show();
+    closeFab();
 
     newPhotoDialog.listen('MDCDialog:accept', function () {
         var params = {
