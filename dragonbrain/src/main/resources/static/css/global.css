@@ -19,6 +19,14 @@ body {
     background-color: white;
 }
 
+.mdc-text-field--textarea .mdc-text-field__label {
+    background-color: transparent;
+}
+
+.container {
+    margin-bottom: 20px;
+}
+
 .center-content {
     display: flex;
     justify-content: center;

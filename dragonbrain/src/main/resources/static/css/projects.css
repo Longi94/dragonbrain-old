@@ -1,6 +1,6 @@
 #projects-div {
     display: flex;
-    flex-flow: row;
+    flex-flow: wrap;
     align-content: left;
     justify-content: left;
 }

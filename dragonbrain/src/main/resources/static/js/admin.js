@@ -28,7 +28,7 @@ function toggleFab() {
     if (fabExpanded) {
         fabExpanded = false;
         var delay = 0;
-        $(".mdc-fab--mini").each(function (index, element) {
+        $($(".mdc-fab--mini").get().reverse()).each(function (index, element) {
             setTimeout(function () {
                 $(element).addClass("mdc-fab--exited");
             }, delay);
