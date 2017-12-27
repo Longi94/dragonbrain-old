@@ -8,13 +8,6 @@
 
     <link rel="stylesheet" href="/css/admin.css"/>
     <script src="/js/admin.js"></script>
-
-    <script th:inline="javascript">
-        // <![CDATA[
-        var projects = [[${projects}]];
-        var photos = [[${photos}]];
-        // ]]>
-    </script>
 </head>
 <body class="mdc-typography">
 <header th:replace="nav :: toolbar('Admin')"></header>
@@ -85,13 +78,13 @@
     <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
         <li class="mdc-list-item" role="menuitem" tabindex="0" onclick="moveSelectedProject(true)">Move up</li>
         <li class="mdc-list-item" role="menuitem" tabindex="0" onclick="moveSelectedProject(false)">Move down</li>
-        <li class="mdc-list-item" role="menuitem" tabindex="0">Edit</li>
+        <li class="mdc-list-item" role="menuitem" tabindex="0" onclick="openEditProjectDialog(event)">Edit</li>
         <li class="mdc-list-item" role="menuitem" tabindex="0" onclick="deleteSelectedProject()">Remove</li>
     </ul>
 </div>
 <div class="mdc-simple-menu mdc-simple-menu--open-from-top-right" tabindex="-1" id="menu-photo">
     <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
-        <li class="mdc-list-item" role="menuitem" tabindex="0">Edit</li>
+        <li class="mdc-list-item" role="menuitem" tabindex="0" onclick="openEditPhotoDialog(event)">Edit</li>
         <li class="mdc-list-item" role="menuitem" tabindex="0" onclick="deleteSelectedPhoto()">Remove</li>
     </ul>
 </div>

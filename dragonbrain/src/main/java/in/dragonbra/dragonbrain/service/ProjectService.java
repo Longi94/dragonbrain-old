@@ -58,4 +58,21 @@ public class ProjectService {
         project.setOrderBy(tempOther);
         projectRepository.save(project);
     }
+
+    public Project updateProject(Long id, Project newProject) {
+        Project project = projectRepository.findOne(id);
+
+        project.setName(newProject.getName());
+        project.setDescription(newProject.getDescription());
+        project.setImage(newProject.getImage());
+        project.setSourceUrl(newProject.getSourceUrl());
+        project.setType(newProject.getType());
+        project.setUrl(newProject.getUrl());
+
+        return projectRepository.save(project);
+    }
+
+    public Project getProject(Long id) {
+        return projectRepository.findOne(id);
+    }
 }

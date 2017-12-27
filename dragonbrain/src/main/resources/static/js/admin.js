@@ -115,8 +115,6 @@ function openNewProjectDialog(event) {
                         '<i class="mdc-list-item__end-detail material-icons" onclick="openProjectMenu(event, this);">more_vert</i>' +
                         '</li>'
                     );
-
-                projects.push(data);
             }
         });
 
@@ -159,8 +157,6 @@ function openNewPhotoDialog(event) {
                         '<i class="mdc-list-item__end-detail material-icons" onclick="openPhotoMenu(event, this);">more_vert</i>' +
                         '</li>'
                     );
-
-                photos.push(data);
             }
         });
 
@@ -225,6 +221,101 @@ function moveSelectedProject(up) {
             }
 
             selectedProject = -1;
+        }
+    });
+}
+
+function openEditProjectDialog(event) {
+    authAjax({
+        url: "/admin/projects/" + selectedProject,
+        type: "GET",
+        success: function (project) {
+            $("#new-project-name").val(project.name);
+            $("#new-project-type").val(project.type);
+            $("#new-project-description").val(project.description);
+            $("#new-project-source").val(project.sourceUrl);
+            $("#new-project-link").val(project.url);
+            $("#new-project-image").val(project.image);
+
+            newProjectDialog.lastFocusedTarget = event.target;
+            newProjectDialog.show();
+
+            newProjectDialog.listen('MDCDialog:accept', function () {
+                var params = {
+                    name: $("#new-project-name").val(),
+                    type: $("#new-project-type").val(),
+                    description: $("#new-project-description").val(),
+                    sourceUrl: $("#new-project-source").val(),
+                    url: $("#new-project-link").val(),
+                    image: $("#new-project-image").val()
+                };
+
+                authAjax({
+                    url: "/admin/projects/" + project.id,
+                    type: "PUT",
+                    data: JSON.stringify(params),
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (project) {
+                        var $toEdit = $("#list-project").find(".mdc-list-item[value='" + selectedProject + "']");
+
+                        $toEdit.find(".mdc-list-item__text").text(project.name)
+                            .append('<span class="mdc-list-item__secondary-text">' + project.type + '</span>')
+                    }
+                });
+
+                $("#dialog-add-project").find("input,textarea").val("");
+            });
+
+            newProjectDialog.listen('MDCDialog:cancel', function () {
+                $("#dialog-add-project").find("input,textarea").val("");
+            });
+        }
+    });
+}
+
+function openEditPhotoDialog(event) {
+
+    authAjax({
+        url: "/admin/photos/" + selectedPhoto,
+        type: "GET",
+        success: function (photo) {
+            $("#new-photo-location").val(photo.location);
+            $("#new-photo-device").val(photo.device);
+            $("#new-photo-date").val(photo.date);
+            $("#new-photo-image").val(photo.path);
+
+            newPhotoDialog.lastFocusedTarget = event.target;
+            newPhotoDialog.show();
+
+            newPhotoDialog.listen('MDCDialog:accept', function () {
+                var params = {
+                    location: $("#new-photo-location").val(),
+                    device: $("#new-photo-device").val(),
+                    date: $("#new-photo-date").val(),
+                    path: $("#new-photo-image").val()
+                };
+
+                authAjax({
+                    url: "/admin/photos/" + photo.id,
+                    type: "PUT",
+                    data: JSON.stringify(params),
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (photo) {
+                        var $toEdit = $("#list-photo").find(".mdc-list-item[value='" + selectedPhoto + "']");
+
+                        $toEdit.find(".mdc-list-item__text").text(photo.location)
+                            .append('<span class="mdc-list-item__secondary-text">' + photo.device + '</span>')
+                    }
+                });
+
+                $("#dialog-add-photo").find("input").val("");
+            });
+
+            newPhotoDialog.listen('MDCDialog:cancel', function () {
+                $("#dialog-add-photo").find("input").val("");
+            });
         }
     });
 }

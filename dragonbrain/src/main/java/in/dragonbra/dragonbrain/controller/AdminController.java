@@ -62,4 +62,35 @@ public class AdminController {
         //userService.checkPrincipal(principal);
         projectService.moveProject(id, up);
     }
+
+    @PutMapping("/projects/{id}")
+    public Project editProject(Principal principal, @PathVariable("id") Long id, @RequestBody Project project) {
+        //userService.checkPrincipal(principal);
+        return projectService.updateProject(id, project);
+    }
+
+    @GetMapping("/projects/{id}")
+    public Project getProject(Principal principal, @PathVariable("id") Long id) {
+        //userService.checkPrincipal(principal);
+        return projectService.getProject(id);
+    }
+
+    @PutMapping("/photos/{id}")
+    public Photo editProject(Principal principal, @PathVariable("id") Long id, @RequestBody Photo photo) {
+        //userService.checkPrincipal(principal);
+        Photo original = photoRepository.findOne(id);
+
+        original.setDate(photo.getDate());
+        original.setDevice(photo.getDevice());
+        original.setLocation(photo.getLocation());
+        original.setPath(photo.getPath());
+
+        return photoRepository.save(original);
+    }
+
+    @GetMapping("/photos/{id}")
+    public Photo getPhoto(Principal principal, @PathVariable("id") Long id) {
+        //userService.checkPrincipal(principal);
+        return photoRepository.findOne(id);
+    }
 }
