@@ -4,6 +4,11 @@
     --mdc-theme-background: #F2F2F2;
 }
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
     /*TODO do it with theme*/
     background-color: #F2F2F2;
@@ -29,8 +34,8 @@ body {
     background-color: transparent;
 }
 
-.container {
-    margin-bottom: 20px;
+.container, .mdc-toolbar-fixed-adjust {
+    margin-bottom: 50px;
 }
 
 .center-content {
@@ -86,4 +91,25 @@ body {
 
 .mdc-list-item > i.mdc-list-item__end-detail {
     cursor: pointer;
+}
+
+.footer {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background: #e6e6e6;
+    position: absolute;
+    bottom: 0;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.footer a {
+    color: #929292;
+    font-size: 14px;
+    margin-left: 16px;
+}
+
+.footer a:first-child {
+    margin-left: 0;
 }
