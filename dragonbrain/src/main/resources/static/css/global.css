@@ -19,8 +19,6 @@ body {
 
 .mdc-dialog__surface {
     background: white;
-    max-height: 500px;
-    overflow: auto;
 }
 
 .mdc-card {
