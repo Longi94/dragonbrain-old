@@ -118,7 +118,8 @@ body {
     margin-left: 0;
 }
 
-.mdc-temporary-drawer__header-content {
-    font-size: 40px;
-    line-height: 40px;
+.mdc-temporary-drawer__header-content img {
+    width: 100%;
+    height: 128%;
+    object-fit: contain;
 }

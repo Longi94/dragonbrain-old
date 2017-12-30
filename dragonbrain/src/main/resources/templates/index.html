@@ -13,12 +13,17 @@
 <body class="mdc-typography">
 <header th:replace="nav :: toolbar('Dragonbrain')"></header>
 <aside th:replace="nav :: drawer('home')"></aside>
-<div class="mdc-toolbar-fixed-adjust center-content">
-    <div class="mdc-card">
-        <section class="mdc-card__primary">
-            <h1 class="mdc-typography--display4">HELLO</h1>
-            <p class="mdc-typography--body1">I want to put something fancy here, but I don't know what yet...</p>
-        </section>
+<div class="mdc-toolbar-fixed-adjust">
+    <div class="center-content">
+        <div class="mdc-card">
+            <section class="mdc-card__primary">
+                <h1 class="mdc-typography--display4">HELLO</h1>
+                <p class="mdc-typography--body1">I want to put something fancy here, but I don't know what yet...</p>
+            </section>
+        </div>
+    </div>
+    <div class="center-content">
+        <img id="logo" src="image/logo-shadow.png"/>
     </div>
 </div>
 <footer th:replace="footer :: footer"></footer>
