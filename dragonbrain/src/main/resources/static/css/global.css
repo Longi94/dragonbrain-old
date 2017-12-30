@@ -117,3 +117,8 @@ body {
 .footer a:first-child {
     margin-left: 0;
 }
+
+.mdc-temporary-drawer__header-content {
+    font-size: 40px;
+    line-height: 40px;
+}

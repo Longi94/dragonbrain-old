@@ -1,0 +1,12 @@
+.mdc-card {
+    width: 500px;
+    margin-top: 30px;
+}
+
+.mdc-card__primary > * {
+    text-align: center;
+}
+
+.mdc-card__primary > *:last-child {
+    margin-bottom: 0;
+}
