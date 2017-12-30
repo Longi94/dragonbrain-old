@@ -44,6 +44,10 @@ body {
     align-items: center;
 }
 
+.scroll-lock {
+    overflow: hidden;
+}
+
 .fab-div {
     position: fixed;
     right: 0;

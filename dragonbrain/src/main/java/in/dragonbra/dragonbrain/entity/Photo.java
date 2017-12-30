@@ -1,5 +1,7 @@
 package in.dragonbra.dragonbrain.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -27,6 +29,7 @@ public class Photo {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "date")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date date;
 
     public Long getId() {

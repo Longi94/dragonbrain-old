@@ -1,4 +1,103 @@
-.mdc-grid-list__tiles {
+#photo-grid {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-tile {
+    width: 196px;
+    height: 196px;
+    margin: 2px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.photo-tile:hover {
+    cursor: pointer;
+}
+
+#photo-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.51);
+    z-index: 110;
+}
+
+#photo-overlay .mdc-ripple-surface {
+    color: white;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#photo-overlay .mdc-ripple-surface.mdc-ripple-upgraded--unbounded::before,
+#photo-overlay .mdc-ripple-surface.mdc-ripple-upgraded--unbounded::after {
+    /*Ripples work weirdly...*/
+    --mdc-ripple-fg-size: 19.2px;
+    --mdc-ripple-fg-scale: 2.87786;
+    --mdc-ripple-left: 6px;
+    --mdc-ripple-top: 6px;
+}
+
+#photo-overlay .mdc-ripple-surface:after, #photo-overlay .mdc-ripple-surface:before {
+    background-color: white;
+}
+
+#button-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#button-right {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+}
+
+#button-left {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+}
+
+#full-photo {
+    position: absolute;
+    top: 0;
+    bottom: 50px;
+    right: 40px;
+    left: 40px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 30px;
+}
+
+#photo-details {
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    line-height: 24px;
+    height: 76px;
+}
+
+#photo-details > div {
+    width: 100%;
     display: flex;
     justify-content: center;
 }

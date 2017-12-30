@@ -36,7 +36,7 @@
         $('document').ready(function () {
             window.mdc.autoInit();
 
-            document.querySelectorAll('.mdc-fab,.mdc-button,.mdc-temporary-drawer .mdc-list-item')
+            document.querySelectorAll('.mdc-fab,.mdc-button,.mdc-ripple-surface,.mdc-temporary-drawer .mdc-list-item')
                 .forEach(function (node) {
                     mdc.ripple.MDCRipple.attachTo(node);
                 });

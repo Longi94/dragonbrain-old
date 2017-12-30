@@ -5,19 +5,55 @@
     <th:block th:replace="head :: head" th:remove="tag"/>
 
     <link rel="stylesheet" href="css/photos.css"/>
+
+    <script th:inline="javascript">
+        //<![CDATA[
+        var photos = [[${photos}]];
+        //]]>
+    </script>
+    <script src="js/photos.js"></script>
 </head>
 <body>
 <header th:replace="nav :: toolbar('Photos')"></header>
 <aside th:replace="nav :: drawer('photos')"></aside>
-<div class="container mdc-toolbar-fixed-adjust">
-    <div class="mdc-grid-list">
-        <ul class="mdc-grid-list__tiles">
-            <li class="mdc-grid-tile" th:each="photo : ${photos}">
-                <div class="mdc-grid-tile__primary">
-                    <img class="mdc-grid-tile__primary-content" th:src="${photo.path}"/>
-                </div>
-            </li>
-        </ul>
+<div class="mdc-toolbar-fixed-adjust">
+    <div id="photo-grid">
+        <div class="photo-tile"
+             onclick="openImage(this);"
+             th:each="photo, iter : ${photos}"
+             th:value="${iter.index}"
+             th:style="${'background-image:url(' + photo.path + ');'}">
+        </div>
+    </div>
+    <div class="center-content" style="color: #ededed; margin-top: 10px;">There will be fancy animations here eventually...</div>
+</div>
+<div id="photo-overlay" style="display: none;">
+    <div id="button-close"
+         class="mdc-ripple-surface demo-surface material-icons"
+         onclick="closeOverlay()"
+         data-mdc-ripple-is-unbounded=""
+         aria-label="Close">
+        clear
+    </div>
+    <div id="button-left"
+         class="mdc-ripple-surface demo-surface material-icons"
+         onclick="previous()"
+         data-mdc-ripple-is-unbounded=""
+         aria-label="Previous">
+        keyboard_arrow_left
+    </div>
+    <div id="button-right"
+         class="mdc-ripple-surface demo-surface material-icons"
+         onclick="next()"
+         data-mdc-ripple-is-unbounded=""
+         aria-label="Right">
+        keyboard_arrow_right
+    </div>
+    <div id="full-photo"></div>
+    <div id="photo-details">
+        <div class="mdc-typography--body2" id="title"></div>
+        <div class="mdc-typography--body1" id="device"></div>
+        <div class="mdc-typography--body1" id="date"></div>
     </div>
 </div>
 <footer th:replace="footer :: footer"></footer>
