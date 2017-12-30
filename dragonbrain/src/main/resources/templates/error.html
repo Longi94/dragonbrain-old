@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error</title>
+    <th:block th:replace="head :: head" th:remove="tag"/>
+
+    <link rel="stylesheet" href="css/error.css"/>
+</head>
+<body>
+<header th:replace="nav :: toolbar('Error')"></header>
+<aside th:replace="nav :: drawer('error')"></aside>
+<div class="mdc-toolbar-fixed-adjust center-content">
+    <div class="mdc-card">
+        <section class="mdc-card__primary">
+            <p class="mdc-typography--body1">Oh no! This is one big fat</p>
+            <!--/*@thymesVar id="status" type="int"*/-->
+            <h1 class="mdc-typography--display4" th:text="${status}"></h1>
+            <p class="mdc-typography--body1">What did you do???</p>
+        </section>
+    </div>
+</div>
+<footer th:replace="footer :: footer"></footer>
+</body>
+</html>

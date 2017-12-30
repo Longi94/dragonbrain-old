@@ -73,4 +73,9 @@ public class FrontendController {
         userService.registerUser(userDto, principal);
         return "redirect:login";
     }
+
+    @GetMapping("/error")
+    public String error() {
+        return "error";
+    }
 }
