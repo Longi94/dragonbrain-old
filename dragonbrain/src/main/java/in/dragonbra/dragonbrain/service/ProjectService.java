@@ -22,7 +22,15 @@ public class ProjectService {
     }
 
     public Project createProject(Project project) {
-        project.setOrderBy(projectRepository.getMaxOrderBy() + 1);
+        Integer maxOrderBy = projectRepository.getMaxOrderBy();
+
+        if (maxOrderBy == null) {
+            maxOrderBy = 1;
+        } else {
+            maxOrderBy = maxOrderBy + 1;
+        }
+
+        project.setOrderBy(maxOrderBy);
         projectRepository.save(project);
         return project;
     }
