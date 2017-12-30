@@ -17,12 +17,14 @@ $('document').ready(function () {
         $("#dialog-add-project").find("input,textarea").val("");
         newProjectDialog.unlisten('MDCDialog:accept', newProjectAccept);
         newProjectDialog.unlisten('MDCDialog:accept', editProjectAccept);
+        closeFab();
     });
 
     newPhotoDialog.listen('MDCDialog:cancel', function () {
         $("#dialog-add-photo").find("input").val("");
         newPhotoDialog.unlisten('MDCDialog:accept', newPhotoAccept);
         newPhotoDialog.unlisten('MDCDialog:accept', editPhotoAccept);
+        closeFab();
     });
 
     $("#list-photo.mdc-list").find(".mdc-list-item").click(function () {
@@ -97,7 +99,7 @@ function openPhotoMenu(event, element) {
 function openNewProjectDialog(event) {
     newProjectDialog.lastFocusedTarget = event.target;
     newProjectDialog.show();
-    closeFab();
+    //closeFab();
 
     newProjectDialog.listen('MDCDialog:accept', newProjectAccept);
 }
@@ -135,12 +137,13 @@ var newProjectAccept = function () {
 
     $("#dialog-add-project").find("input,textarea").val("");
     newProjectDialog.unlisten('MDCDialog:accept', newProjectAccept);
+    closeFab();
 };
 
 function openNewPhotoDialog(event) {
     newPhotoDialog.lastFocusedTarget = event.target;
     newPhotoDialog.show();
-    closeFab();
+    //closeFab();
 
     newPhotoDialog.listen('MDCDialog:accept', newPhotoAccept);
 }
@@ -176,6 +179,7 @@ var newPhotoAccept = function () {
 
     $("#dialog-add-photo").find("input").val("");
     newPhotoDialog.unlisten('MDCDialog:accept', newPhotoAccept);
+    closeFab();
 };
 
 function deleteSelectedProject() {
@@ -282,6 +286,7 @@ var editProjectAccept = function (evt) {
 
     $("#dialog-add-project").find("input,textarea").val("");
     newProjectDialog.unlisten('MDCDialog:accept', editProjectAccept);
+    closeFab();
 };
 
 function openEditPhotoDialog(event) {
@@ -328,4 +333,5 @@ var editPhotoAccept = function (evt) {
 
     $("#dialog-add-photo").find("input").val("");
     newPhotoDialog.unlisten('MDCDialog:accept', editPhotoAccept);
+    closeFab();
 };
