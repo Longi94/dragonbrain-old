@@ -62,7 +62,7 @@
                 <th:block th:each="photo, iter : ${photos}">
                     <li class="mdc-list-item" th:value="${photo.id}">
                         <span class="mdc-list-item__text">
-                            <span th:text="${photo.location}" th:remove="tag"></span>
+                            <span th:text="${photo.title}" th:remove="tag"></span>
                             <span class="mdc-list-item__secondary-text" th:text="${photo.device}"></span>
                         </span>
                         <i class="mdc-list-item__end-detail material-icons" onclick="openPhotoMenu(event, this);">more_vert
@@ -152,8 +152,8 @@
         </header>
         <section id="dialog-add-photo-description" class="mdc-dialog__body mdc-dialog__body--scrollable">
             <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
-                <input type="text" id="new-photo-location" class="mdc-text-field__input"/>
-                <label class="mdc-text-field__label" for="new-photo-location">Location</label>
+                <input type="text" id="new-photo-title" class="mdc-text-field__input"/>
+                <label class="mdc-text-field__label" for="new-photo-title">Title</label>
                 <div class="mdc-text-field__bottom-line"></div>
             </div>
             <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">

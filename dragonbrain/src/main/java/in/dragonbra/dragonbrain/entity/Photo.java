@@ -21,8 +21,8 @@ public class Photo {
     @Column(name = "path", nullable = false)
     private String path;
 
-    @Column(name = "location")
-    private String location;
+    @Column(name = "title")
+    private String title;
 
     @Column(name = "device")
     private String device;
@@ -48,12 +48,12 @@ public class Photo {
         this.path = path;
     }
 
-    public String getLocation() {
-        return location;
+    public String getTitle() {
+        return title;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDevice() {

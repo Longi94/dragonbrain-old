@@ -133,7 +133,7 @@ function openNewPhotoDialog(event) {
 
     newPhotoDialog.listen('MDCDialog:accept', function () {
         var params = {
-            location: $("#new-photo-location").val(),
+            title: $("#new-photo-title").val(),
             device: $("#new-photo-device").val(),
             date: $("#new-photo-date").val(),
             path: $("#new-photo-image").val()
@@ -151,7 +151,7 @@ function openNewPhotoDialog(event) {
                 $listPhoto.append('<li role="separator" class="mdc-list-divider"></li>')
                     .append(
                         '<li class="mdc-list-item" value="' + data.id + '">' +
-                        '<span class="mdc-list-item__text">' + data.location +
+                        '<span class="mdc-list-item__text">' + data.title +
                         '<span class="mdc-list-item__secondary-text">' + data.device + '</span>' +
                         '</span>' +
                         '<i class="mdc-list-item__end-detail material-icons" onclick="openPhotoMenu(event, this);">more_vert</i>' +
@@ -280,7 +280,7 @@ function openEditPhotoDialog(event) {
         url: "/admin/photos/" + selectedPhoto,
         type: "GET",
         success: function (photo) {
-            $("#new-photo-location").val(photo.location);
+            $("#new-photo-title").val(photo.title);
             $("#new-photo-device").val(photo.device);
             $("#new-photo-date").val(photo.date);
             $("#new-photo-image").val(photo.path);
@@ -290,7 +290,7 @@ function openEditPhotoDialog(event) {
 
             newPhotoDialog.listen('MDCDialog:accept', function () {
                 var params = {
-                    location: $("#new-photo-location").val(),
+                    title: $("#new-photo-title").val(),
                     device: $("#new-photo-device").val(),
                     date: $("#new-photo-date").val(),
                     path: $("#new-photo-image").val()
@@ -305,7 +305,7 @@ function openEditPhotoDialog(event) {
                     success: function (photo) {
                         var $toEdit = $("#list-photo").find(".mdc-list-item[value='" + selectedPhoto + "']");
 
-                        $toEdit.find(".mdc-list-item__text").text(photo.location)
+                        $toEdit.find(".mdc-list-item__text").text(photo.title)
                             .append('<span class="mdc-list-item__secondary-text">' + photo.device + '</span>')
                     }
                 });

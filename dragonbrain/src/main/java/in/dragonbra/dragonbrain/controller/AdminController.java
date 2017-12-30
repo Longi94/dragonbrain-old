@@ -82,7 +82,7 @@ public class AdminController {
 
         original.setDate(photo.getDate());
         original.setDevice(photo.getDevice());
-        original.setLocation(photo.getLocation());
+        original.setTitle(photo.getTitle());
         original.setPath(photo.getPath());
 
         return photoRepository.save(original);

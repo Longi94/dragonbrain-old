@@ -29,7 +29,7 @@ function previous() {
 
 function selectPhoto() {
     $("#full-photo").css({'background-image': 'url(' + photos[index].path + ')'});
-    $("#title").text(photos[index].location);
+    $("#title").text(photos[index].title);
     $("#device").text(photos[index].device);
     $("#date").text(photos[index].date.substring(0, 10));
 }
