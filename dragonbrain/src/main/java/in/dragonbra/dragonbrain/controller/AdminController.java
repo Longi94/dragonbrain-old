@@ -82,6 +82,7 @@ public class AdminController {
 
         original.setDate(photo.getDate());
         original.setDevice(photo.getDevice());
+        original.setThumbnail(photo.getThumbnail());
         original.setTitle(photo.getTitle());
         original.setPath(photo.getPath());
 

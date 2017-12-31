@@ -22,7 +22,7 @@
              onclick="openImage(this);"
              th:each="photo, iter : ${photos}"
              th:value="${iter.index}"
-             th:style="${'background-image:url(&quot;' + photo.path + '&quot;);'}">
+             th:style="${'background-image:url(&quot;' + photo.thumbnail + '&quot;);'}">
         </div>
     </div>
     <div class="center-content" style="color: #ededed; margin-top: 10px;">There will be fancy animations here eventually...</div>

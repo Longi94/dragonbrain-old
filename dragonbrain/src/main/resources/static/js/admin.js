@@ -153,7 +153,8 @@ var newPhotoAccept = function () {
         title: $("#new-photo-title").val(),
         device: $("#new-photo-device").val(),
         date: $("#new-photo-date").val(),
-        path: $("#new-photo-image").val()
+        path: $("#new-photo-image").val(),
+        thumbnail: $("#new-photo-thumbnail").val()
     };
 
     authAjax({
@@ -299,6 +300,7 @@ function openEditPhotoDialog(event) {
             $("#new-photo-device").val(photo.device);
             $("#new-photo-date").val(photo.date);
             $("#new-photo-image").val(photo.path);
+            $("#new-photo-thumbnail").val(photo.thumbnail);
 
             newPhotoDialog.root_.photoId = photo.id;
             newPhotoDialog.lastFocusedTarget = event.target;
@@ -314,7 +316,8 @@ var editPhotoAccept = function (evt) {
         title: $("#new-photo-title").val(),
         device: $("#new-photo-device").val(),
         date: $("#new-photo-date").val(),
-        path: $("#new-photo-image").val()
+        path: $("#new-photo-image").val(),
+        thumbnail: $("#new-photo-thumbnail").val()
     };
 
     authAjax({
