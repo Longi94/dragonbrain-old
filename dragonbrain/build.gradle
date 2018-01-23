@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 
-version = '1.0.2'
+version = '1.0.3'
 sourceCompatibility = 1.8
 
 jar {
@@ -24,7 +24,6 @@ jar {
 }
 
 dependencies {
-    compile 'com.google.code.gson:gson:2.8.1'
     compile 'commons-io:commons-io:2.5'
     compile 'org.apache.commons:commons-lang3:3.6'
     compile 'org.springframework.boot:spring-boot-starter-security'
