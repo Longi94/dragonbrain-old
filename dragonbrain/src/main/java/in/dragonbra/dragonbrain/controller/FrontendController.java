@@ -27,7 +27,9 @@ public class FrontendController {
     private final UserService userService;
 
     @Autowired
-    public FrontendController(ProjectRepository projectRepository, PhotoRepository photoRepository, UserService userService) {
+    public FrontendController(ProjectRepository projectRepository,
+                              PhotoRepository photoRepository,
+                              UserService userService) {
         this.projectRepository = projectRepository;
         this.photoRepository = photoRepository;
         this.userService = userService;
