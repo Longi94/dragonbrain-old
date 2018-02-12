@@ -1,6 +1,7 @@
 package in.dragonbra.dragonbrain.service;
 
 import com.google.gson.Gson;
+import in.dragonbra.dragonbrain.model.GithubRepository;
 import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.service.RepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class GithubService {
         List<Repository> repositories = repositoryService.getRepositories();
 
         Map<String, Long> totalLanguages = new HashMap<>();
-        List<Map<String, Long>> githubRepositories = new LinkedList<>();
+        List<GithubRepository> githubRepositories = new LinkedList<>();
 
         for (Repository repository : repositories) {
             Map<String, Long> languages = repositoryService.getLanguages(repository);
@@ -47,7 +48,11 @@ public class GithubService {
                 }
             });
 
-            githubRepositories.add(languages);
+            githubRepositories.add(new GithubRepository(
+                    languages,
+                    repository.getId(),
+                    repository.getUpdatedAt().getTime()
+            ));
         }
 
         String date = FORMAT.format(new Date());
@@ -57,7 +62,7 @@ public class GithubService {
         saveRepositories(fileName, githubRepositories);
     }
 
-    private void saveRepositories(String fileName, List<Map<String, Long>> githubRepositories) throws IOException {
+    private void saveRepositories(String fileName, List<GithubRepository> githubRepositories) throws IOException {
         File dir = new File("repositores");
         dir.mkdirs();
 
