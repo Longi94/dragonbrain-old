@@ -1,14 +1,16 @@
 package in.dragonbra.dragonbrain.service;
 
+import com.google.gson.Gson;
 import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.service.RepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @author lngtr
@@ -19,15 +21,20 @@ public class GithubService {
 
     private final RepositoryService repositoryService;
 
+    private static final SimpleDateFormat FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+
+    private final Gson gson = new Gson();
+
     @Autowired
     public GithubService(RepositoryService repositoryService) {
         this.repositoryService = repositoryService;
     }
 
-    public Map<String, Long> getLanguages() throws IOException {
+    public void getLanguages() throws IOException {
         List<Repository> repositories = repositoryService.getRepositories();
 
         Map<String, Long> totalLanguages = new HashMap<>();
+        List<Map<String, Long>> githubRepositories = new LinkedList<>();
 
         for (Repository repository : repositories) {
             Map<String, Long> languages = repositoryService.getLanguages(repository);
@@ -39,8 +46,40 @@ public class GithubService {
                     totalLanguages.put(key, value);
                 }
             });
+
+            githubRepositories.add(languages);
         }
 
-        return totalLanguages;
+        String date = FORMAT.format(new Date());
+        String fileName = date + ".json";
+
+        saveTotalLanguages(fileName, totalLanguages);
+        saveRepositories(fileName, githubRepositories);
+    }
+
+    private void saveRepositories(String fileName, List<Map<String, Long>> githubRepositories) throws IOException {
+        File dir = new File("repositores");
+        dir.mkdirs();
+
+        File file = new File(dir, fileName);
+
+        FileWriter writer = new FileWriter(file);
+
+        writer.write(gson.toJson(githubRepositories));
+        writer.flush();
+        writer.close();
+    }
+
+    private void saveTotalLanguages(String fileName, Map<String, Long> languages) throws IOException {
+        File dir = new File("languages");
+        dir.mkdirs();
+
+        File file = new File(dir, fileName);
+
+        FileWriter writer = new FileWriter(file);
+
+        writer.write(gson.toJson(languages));
+        writer.flush();
+        writer.close();
     }
 }
