@@ -54,7 +54,7 @@ public class AdminController {
     @DeleteMapping("/photos/{id}")
     public void deletePhoto(Principal principal, @PathVariable("id") Long id) {
         userService.checkPrincipal(principal);
-        photoRepository.delete(id);
+        photoRepository.deleteById(id);
     }
 
     @PostMapping("/projects/{id}/move")
@@ -78,7 +78,7 @@ public class AdminController {
     @PutMapping("/photos/{id}")
     public Photo editProject(Principal principal, @PathVariable("id") Long id, @RequestBody Photo photo) {
         userService.checkPrincipal(principal);
-        Photo original = photoRepository.findOne(id);
+        Photo original = photoRepository.getOne(id);
 
         original.setDate(photo.getDate());
         original.setDevice(photo.getDevice());
@@ -92,6 +92,6 @@ public class AdminController {
     @GetMapping("/photos/{id}")
     public Photo getPhoto(Principal principal, @PathVariable("id") Long id) {
         userService.checkPrincipal(principal);
-        return photoRepository.findOne(id);
+        return photoRepository.getOne(id);
     }
 }

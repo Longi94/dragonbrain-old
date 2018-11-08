@@ -1,7 +1,8 @@
 package in.dragonbra.dragonbrain.util;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -15,7 +16,7 @@ import java.io.InputStream;
  */
 public class HttpUtils {
 
-    private static final Logger logger = Logger.getLogger(HttpUtils.class);
+    private static final Logger logger = LoggerFactory.getLogger(HttpUtils.class);
 
     public static void writeToResponse(String file, HttpServletResponse response) {
         writeToResponse(new File(file), response);

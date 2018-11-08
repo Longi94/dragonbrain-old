@@ -36,11 +36,11 @@ public class ProjectService {
     }
 
     public void deleteProject(Long id) {
-        projectRepository.delete(id);
+        projectRepository.deleteById(id);
     }
 
     public void moveProject(Long id, boolean up) {
-        Project project = projectRepository.findOne(id);
+        Project project = projectRepository.getOne(id);
 
         if (project == null) {
             throw new NotFoundException();
@@ -68,7 +68,7 @@ public class ProjectService {
     }
 
     public Project updateProject(Long id, Project newProject) {
-        Project project = projectRepository.findOne(id);
+        Project project = projectRepository.getOne(id);
 
         project.setName(newProject.getName());
         project.setDescription(newProject.getDescription());
@@ -81,6 +81,6 @@ public class ProjectService {
     }
 
     public Project getProject(Long id) {
-        return projectRepository.findOne(id);
+        return projectRepository.getOne(id);
     }
 }
