@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$app-primary: mat-palette($mat-gray);
+$app-accent: mat-palette($mat-amber, A200, A100, A400);
+$app-warn: mat-palette($mat-red);
+
+$background-color: #303030;
+$text-primary: white;

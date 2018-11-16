@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ProjectService } from "../../shared/project.service";
 
 @Component({
@@ -7,6 +7,8 @@ import { ProjectService } from "../../shared/project.service";
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+
+  scrollY: number = 0;
 
   constructor(private projectService: ProjectService) {
   }
@@ -17,4 +19,8 @@ export class MainComponent implements OnInit {
     }, console.error);
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll($event: Event) {
+    this.scrollY = window.scrollY;
+  }
 }
